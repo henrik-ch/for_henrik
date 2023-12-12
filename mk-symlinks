@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cp --recursive --symbolic-link --update=all --remove-dest -v --reflink=never --target-directory=/home/bzm3r/ /home/bzm3r/system/system/home/common/.
+
+cp --recursive --symbolic-link --update=all --remove-dest -v --reflink=never --target-directory=/home/bzm3r/ /home/bzm3r/system/system/home/d/.
