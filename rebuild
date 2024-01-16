@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+function getRelative {
+    echo $(realpath -- "$(dirname -- "${BASH_SOURCE[0]}")/$1")
+}
+
+PINNED_NIXPKGS="$(getRelative nixpkgs/path.nix)"
+# nix-instantiate --eval has no raw mode yet
+NIXPKGS_PATH=$(nix-instantiate --eval --read-write-mode $PINNED_NIXPKGS | tr -d \")
+# Get the ./root.nix relative to this script
+ENTRY_POINT="$(getRelative './root.nix')"
+
+# nixos-rebuild always reads Nixpkgs from the NIX_PATH,
+# so we need to set it explicitly to our pinned version
+NIX_PATH=nixpkgs=$NIXPKGS_PATH:nixos-config=$ENTRY_POINT
+export NIX_PATH
+
+read -p "Generation label? " label
+
+# test -z STRING: test if STRING has zero length
+# (test -n STRING for non-zero length test)
+if test -z "$label"; then
+    NIXOS_LABEL=$(date +"%b%d_%H%M")
+else
+    NIXOS_LABEL=${label}
+fi
+export NIXOS_LABEL
+
+NIXOS_CONFIG_ENTRY=$(getRelative './')
+export NIXOS_CONFIG_ENTRY
+MK_SYMLINKS="$NIXOS_CONFIG_ENTRY/mk-symlinks"
+export MK_SYMLINKS
+NIXOS_CONFIG_DIR="$NIXOS_CONFIG_ENTRY"
+export NIXOS_CONFIG_DIR
+MACHINE_LABEL="d"
+export MACHINE_LABEL
+
+sudo MACHINE_LABEL="$MACHINE_LABEL" NIXOS_LABEL="$NIXOS_LABEL" NIXOS_CONFIG_ENTRY="$NIXOS_CONFIG_ENTRY" NIXOS_CONFIG_DIR="$NIXOS_CONFIG_DIR" nixos-rebuild "$@" -I nixpkgs="$NIXPKGS_PATH" -I nixos-config="$ENTRY_POINT"
+$MK_SYMLINKS
+exec

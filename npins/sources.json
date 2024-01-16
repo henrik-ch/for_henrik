@@ -1,0 +1,59 @@
+{
+  "pins": {
+    "haskell-shell": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bzm3r",
+        "repo": "haskell-shell"
+      },
+      "branch": "main",
+      "revision": "2bc7f222c87882fa3312381f947e245fa391d08c",
+      "url": "https://github.com/bzm3r/haskell-shell/archive/2bc7f222c87882fa3312381f947e245fa391d08c.tar.gz",
+      "hash": "1h9fclvqwifl8hc11lqmlc0ks469lbbzgi09j8zvx780ncbmpigh"
+    },
+    "mkscript": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bzm3r",
+        "repo": "mkscript"
+      },
+      "branch": "main",
+      "revision": "f2a9455c3be9fdb964903eca48ce698043fca876",
+      "url": "https://github.com/bzm3r/mkscript/archive/f2a9455c3be9fdb964903eca48ce698043fca876.tar.gz",
+      "hash": "0sb1iffwirza2i81i4rsvwbmr4n6w1ckpshx3rx7n1zr20c1plrr"
+    },
+    "nixos-unstable": {
+      "type": "Channel",
+      "name": "nixos-unstable",
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-24.05pre571036.9b19f5e77dd9/nixexprs.tar.xz",
+      "hash": "19xh32y6vdz28bzh9lm84dd515iyr11mgh06br0bxrxp60ckmbq6"
+    },
+    "pmv": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bzm3r",
+        "repo": "pmv"
+      },
+      "branch": "main",
+      "revision": "a2ccff9870dbaf19aaa6d6e712d311719524db83",
+      "url": "https://github.com/bzm3r/pmv/archive/a2ccff9870dbaf19aaa6d6e712d311719524db83.tar.gz",
+      "hash": "16x817aa24ppb6sfyp2jjfjvavskk7bzslyb9cvasxx1v8iwf802"
+    },
+    "rust-shell": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bzm3r",
+        "repo": "rust-shell"
+      },
+      "branch": "main",
+      "revision": "a319b0a55b5505217805c98945cec43ee295c07f",
+      "url": "https://github.com/bzm3r/rust-shell/archive/a319b0a55b5505217805c98945cec43ee295c07f.tar.gz",
+      "hash": "10p14i45hsg2agxfc9pscli7p5i0iddilz1rgnljxcqxspp27p4k"
+    }
+  },
+  "version": 3
+}
